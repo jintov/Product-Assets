@@ -11,7 +11,7 @@
                 "tags": [
                     "DAM"
                 ],
-                "operationId": "assets_get",
+                "operationId": "getAssets",
                 "consumes": [],
                 "produces": [
                     "application/json",
@@ -36,7 +36,7 @@
                 "tags": [
                     "DAM"
                 ],
-                "operationId": "assets_getByGtin",
+                "operationId": "getAssetsByGtin",
                 "consumes": [],
                 "produces": [
                     "application/json",
@@ -71,7 +71,8 @@
             "type": "object",
             "properties": {
                 "gtin": {
-                    "type": "integer"
+                    "type": "integer",
+					"description": "The Global Trade Item Number for the product"
                 },
                 "assettype": {
                     "type": "string",
@@ -83,10 +84,12 @@
                     ]
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+					"description": "Name of the asset, if any"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+					"description": "The URL to the asset"
                 }
             }
         }
