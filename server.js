@@ -1,7 +1,7 @@
 'use strict';
 
 //Set up global variables
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 8002;
 var dataFile = './data/assets.json';
 
 //Set up npm modules
