@@ -1,0 +1,94 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Product Assets",
+        "description": "A service that provides product assets, such as images and videos, from a Digital Asset Management (DAM) system"
+    },
+    "paths": {
+        "/assets": {
+            "get": {
+                "tags": [
+                    "DAM"
+                ],
+                "operationId": "assets_get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Asset"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/assets/{gtin}": {
+            "get": {
+                "tags": [
+                    "DAM"
+                ],
+                "operationId": "assets_getByGtin",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "gtin",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Asset"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Asset": {
+            "type": "object",
+            "properties": {
+                "gtin": {
+                    "type": "integer"
+                },
+                "assettype": {
+                    "type": "string",
+                    "description": "Type indicating whether the asset is an image or a video",
+                    "default": "image",
+                    "enum": [
+                        "image",
+                        "video"
+                    ]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
