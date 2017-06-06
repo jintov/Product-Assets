@@ -1,3 +1,3 @@
-# dam
+# Product Assets
 
-Swagger api [location](./config/swagger.json)
+A simple Node.js based microservice that provides product assets (images, videos).
