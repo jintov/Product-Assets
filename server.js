@@ -10,13 +10,19 @@ var jp = require('jsonpath')
 var express = require('express');
 var app = express();
 
-//Set up npm modules for Swagger UI
+//Set up npm module for Swagger UI
 var swaggerUi = require('swaggerize-ui');
 
 //Endpoint to get assets for all products
 app.get('/assets', function(req, res) {
 	fs.readFile(dataFile, 'utf8', function(err, data){
-		res.end(data);
+		var assets = JSON.parse(data);
+
+		var result = JSON.parse('{}');
+		result.assets = assets;
+		result.lastUpdatedAt = Date.now();
+		
+		res.end(JSON.stringify(result));
 	});
 })
 
@@ -24,8 +30,13 @@ app.get('/assets', function(req, res) {
 app.get('/assets/:gtin', function(req, res) {
 	fs.readFile(dataFile, 'utf8', function(err, data){
 		var assets = JSON.parse(data);
-		var asset = jp.query(assets, '$..[?(@.gtin==' + req.params.gtin + ')]');
-		res.end(JSON.stringify(asset));
+		var filteredAssets = jp.query(assets, '$..[?(@.gtin==' + req.params.gtin + ')]');
+
+		var result = JSON.parse('{}');
+		result.assets = filteredAssets;
+		result.lastUpdatedAt = Date.now();
+		
+		res.end(JSON.stringify(result));
 	});
 })
 

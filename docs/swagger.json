@@ -21,10 +21,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Asset"
-                            }
+							"$ref": "#/definitions/AssetsResult"
                         }
                     }
                 },
@@ -55,10 +52,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Asset"
-                            }
+							"$ref": "#/definitions/AssetsResult"
                         }
                     }
                 },
@@ -67,7 +61,23 @@
         }
     },
     "definitions": {
-        "Asset": {
+        "AssetsResult": {
+            "type": "object",
+            "properties": {
+                "assets": {
+                    "type": "array",
+					"items": {
+						"$ref": "#/definitions/Asset"
+					},
+					"description": "An array of assets"
+                },
+                "lastUpdatedAt": {
+                    "type": "integer",
+					"description": "Indicates when the data was last refreshed / updated (in milliseconds since Jan 1 1970)"
+                }
+			}
+		},
+		"Asset": {
             "type": "object",
             "properties": {
                 "gtin": {
@@ -92,6 +102,6 @@
 					"description": "The URL to the asset"
                 }
             }
-        }
+		}
     }
 }
