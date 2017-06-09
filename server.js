@@ -20,7 +20,7 @@ app.get('/assets', function(req, res) {
 
 		var result = JSON.parse('{}');
 		result.assets = assets;
-		result.lastUpdatedAt = Date.now();
+		result.assetsLastUpdatedAt = Date.now();
 		
 		res.end(JSON.stringify(result));
 	});
@@ -34,7 +34,7 @@ app.get('/assets/:gtin', function(req, res) {
 
 		var result = JSON.parse('{}');
 		result.assets = filteredAssets;
-		result.lastUpdatedAt = Date.now();
+		result.assetsLastUpdatedAt = Date.now();
 		
 		res.end(JSON.stringify(result));
 	});
