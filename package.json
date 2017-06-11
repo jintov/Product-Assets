@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/jintov/Product-Assets#readme",
   "dependencies": {
+    "basic-auth": "^1.1.0",
     "express": "^4.15.3",
     "jsonpath": "^0.2.11",
     "swaggerize-ui": "^1.0.1"

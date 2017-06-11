@@ -7,6 +7,7 @@ var dataFile = './data/assets.json';
 //Set up npm modules
 var fs = require('fs');
 var jp = require('jsonpath')
+var auth = require('basic-auth');
 var express = require('express');
 var app = express();
 
@@ -28,6 +29,18 @@ app.get('/assets', function(req, res) {
 
 //Endpoint to get assets for a given GTIN
 app.get('/assets/:gtin', function(req, res) {
+
+	//Uncomment - BEGIN (for a later hands on)
+	var credentials = auth(req);
+	if (!credentials || credentials.name !== 'serviceuser' || credentials.pass !== 'servicepassword') {
+		res.statusCode = 401;
+		res.setHeader('WWW-Authenticate', 'Basic realm="example"');
+		res.end('Access denied');
+
+		return;
+	}
+	//Uncomment - END
+
 	fs.readFile(dataFile, 'utf8', function(err, data){
 		var assets = JSON.parse(data);
 		var filteredAssets = jp.query(assets, '$..[?(@.gtin==' + req.params.gtin + ')]');
