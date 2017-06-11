@@ -30,7 +30,9 @@ app.get('/assets', function(req, res) {
 //Endpoint to get assets for a given GTIN
 app.get('/assets/:gtin', function(req, res) {
 
-	//Uncomment - BEGIN (for a later hands on)
+	//The below commented code is for a later hands-on
+	//UNCOMMENT LATER
+	/*
 	var credentials = auth(req);
 	if (!credentials || credentials.name !== 'serviceuser' || credentials.pass !== 'servicepassword') {
 		res.statusCode = 401;
@@ -39,7 +41,8 @@ app.get('/assets/:gtin', function(req, res) {
 
 		return;
 	}
-	//Uncomment - END
+	*/
+	//UNCOMMENT LATER
 
 	fs.readFile(dataFile, 'utf8', function(err, data){
 		var assets = JSON.parse(data);
