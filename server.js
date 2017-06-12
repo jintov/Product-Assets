@@ -53,7 +53,9 @@ app.get('/assets/:gtin', function(req, res) {
 		result.assets = filteredAssets;
 		result.assetsLastUpdatedAt = Date.now();
 		
-		res.end(JSON.stringify(result));
+		var response = JSON.stringify(result);
+		res.setHeader('Content-Length', response.length);
+		res.end(response);
 	});
 })
 
