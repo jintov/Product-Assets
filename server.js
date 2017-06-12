@@ -23,7 +23,9 @@ app.get('/assets', function(req, res) {
 		result.assets = assets;
 		result.assetsLastUpdatedAt = Date.now();
 		
-		res.end(JSON.stringify(result));
+		var response = JSON.stringify(result);
+		res.setHeader('Content-Length', response.length);
+		res.end(response);
 	});
 })
 
