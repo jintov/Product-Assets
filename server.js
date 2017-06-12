@@ -44,6 +44,7 @@ app.get('/assets/:gtin', function(req, res) {
 	*/
 	//UNCOMMENT LATER
 
+	//Test comment
 	fs.readFile(dataFile, 'utf8', function(err, data){
 		var assets = JSON.parse(data);
 		var filteredAssets = jp.query(assets, '$..[?(@.gtin==' + req.params.gtin + ')]');
