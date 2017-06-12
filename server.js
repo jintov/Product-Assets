@@ -24,7 +24,7 @@ app.get('/assets', function(req, res) {
 		result.assetsLastUpdatedAt = Date.now();
 		
 		var response = JSON.stringify(result);
-		res.setHeader('Content-Length', response.length);
+		res.setHeader('Content-Length', Buffer.byteLength(response, 'utf8'));
 		res.end(response);
 	});
 })
@@ -56,7 +56,7 @@ app.get('/assets/:gtin', function(req, res) {
 		result.assetsLastUpdatedAt = Date.now();
 		
 		var response = JSON.stringify(result);
-		res.setHeader('Content-Length', response.length);
+		res.setHeader('Content-Length', Buffer.byteLength(response, 'utf8'));
 		res.end(response);
 	});
 })
